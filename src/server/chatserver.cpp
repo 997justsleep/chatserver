@@ -19,6 +19,11 @@ ChatServer::ChatServer(EventLoop *loop,
     // 设置线程数量
     _server.setThreadNum(4);
 }
+/**
+ * mainLoop(mainThread) int listenfd = socket() listenfd --> 客户端的连接
+ * setThreadNum(4) mainLoop + subLoop == 4 
+ * 4 * subLoop(subThread) --> int connfd = accept() --> 监听已连接用户的读写事件
+ */
 
 // 启动服务
 void ChatServer::start()
